@@ -1,16 +1,24 @@
-# This is a sample Python script.
+#******** Single Video Download********
+from pytube import YouTube
+link = "https://www.youtube.com/watch?v=JXQ_lFGM0bg"
+youtube_1 = YouTube(link)
+print(youtube_1.title)
+print(youtube_1.thumbnail_url)
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+videos = youtube_1.streams.all()  #Single Video
+#videos = youtube_1.streams.filter(only_audio=True) #Only Audio
+vid = list(enumerate(videos))
+for i in vid:
+    print(i)
+print()
+strm = int(input("enter :"))
+videos[strm].download()
+print('Successfully')
 
+#********Playlist********
+#from pytube import Playlist
+#py = Playlist("https://www.youtube.com/playlist?list=PLdHIF9NW4IWotEB-5UWCHa6jsykp4Vsfm ")
+#print(f'Downloading : {py.title}')
+#for video in py.videos:
+    #video.streams.first().download()
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
